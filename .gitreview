@@ -1,5 +1,5 @@
 [gerrit]
 host=review.gerrithub.io
 port=29418
-project=badgerj/DashDisplay.git
+project=badgerj/dash-display.git
 defaultbranch=master
