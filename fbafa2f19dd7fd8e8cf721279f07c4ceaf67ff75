@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bef1d8d_4a307030",
+        "filename": "src/DisplayAndConnectManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "I think the name of the class is a bit confusing.\nIt seems to do more that display and connect. It also handles data collection and, possibly processing. It\u0027s looks like it\u0027s going to become the backbone of your application. \"Application\" maybe? like in Qt.",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098973ff_369c819e",
+        "filename": "src/OBD2Manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "Is it possible to connect() from the constructor?\nIf so, you would not need to check for the connected state and you could call connectStats() directly.\n\nAlso, did you mean:\nm_isConnected \u003d connect()",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b07f84_e30a37b5",
+        "filename": "src/OBD2Manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "This could be private, like connect().",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2e92ed_132819af",
+        "filename": "src/TemperatureManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "That\u0027s a nice design. I think I\u0027ll use that in my own project :)",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbd5ce5_b61c788e",
+        "filename": "src/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "That\u0027s an odd way to construct an object. You don\u0027t need to use auto or the assignment operator here:\n\nDisplayAndConnectManager dAndC(OLED_ADDRESS, ONEWIRE_BUS_PIN);",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c81f9d_d67f9392",
+        "filename": "src/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1016934
+      },
+      "writtenOn": "2019-08-16T23:16:36Z",
+      "side": 1,
+      "message": "You can remove the concept of init() by making dAndC a std::unique_ptr and allocating the pointer here. I think that would simplify the logic since, as soon as you have an initialize function, you need to check for initialization in every functions you have in your classes. Having the init() code inside the constructor guarantees your objects are always initialized.",
+      "revId": "fbafa2f19dd7fd8e8cf721279f07c4ceaf67ff75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
